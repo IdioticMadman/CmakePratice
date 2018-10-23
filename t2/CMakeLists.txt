@@ -23,7 +23,7 @@ add_subdirectory(src bin)
 # 问题是，我应该把这两条指令写在工程的 CMakeLists.txt 还是 src 目录下的
 # CMakeLists.txt，把握一个简单的原则，在哪里 ADD_EXECUTABLE 或 ADD_LIBRARY，
 # 如果需要改变目标存放路径，就在哪里加入上述的定义。
-install(TARGETS hello RUNTIME DESTINATION bin)
+
 install(PROGRAMS runhello.sh DESTINATION bin)
 install(FILES COPYRIGHT README DESTINATION share/doc/cmake/t2)
 install(DIRECTORY doc/ DESTINATION share/doc/cmake/t2)
