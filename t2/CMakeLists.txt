@@ -24,6 +24,47 @@ add_subdirectory(src bin)
 # CMakeLists.txt，把握一个简单的原则，在哪里 ADD_EXECUTABLE 或 ADD_LIBRARY，
 # 如果需要改变目标存放路径，就在哪里加入上述的定义。
 
+
+# INSTALL指令包含了各种安装类型
+# 目标文件的安装，需要在add_Library或者add_executeable进行指定，分为三种类型
+# ARCHIVE LIBRARY RUNTIME，格式如下
+#  INSTALL(TARGETS targets...
+#  [[ARCHIVE|LIBRARY|RUNTIME] [DESTINATION <dir>]
+#  [PERMISSIONS permissions...]
+#  [CONFIGURATIONS [Debug|Release|...]]
+#  [COMPONENT <component>]
+#  [OPTIONAL]
+#  ] [...])
+# eg: install(TARGETS hello RUNTIME DESTINATION bin)
+
+# 非目标文件的可执行程序安装
+# INSTALL(PROGRAMS files... DESTINATION <dir>
+#             [PERMISSIONS permissions...]
+#             [CONFIGURATIONS [Debug|Release|...]]
+#             [COMPONENT <component>]
+#             [RENAME <name>] [OPTIONAL])
+# 默认权限是755
+
 install(PROGRAMS runhello.sh DESTINATION bin)
+
+# 普通文件的安装
+# INSTALL(FILES files... DESTINATION <dir>
+#             [PERMISSIONS permissions...]
+#             [CONFIGURATIONS [Debug|Release|...]]
+#             [COMPONENT <component>]
+#             [RENAME <name>] [OPTIONAL])
+# 默认权限是644
 install(FILES COPYRIGHT README DESTINATION share/doc/cmake/t2)
+
+# 文件夹的安装
+# INSTALL(DIRECTORY dirs... DESTINATION <dir>
+#             [FILE_PERMISSIONS permissions...]
+#             [DIRECTORY_PERMISSIONS permissions...]
+#             [USE_SOURCE_PERMISSIONS]
+#             [CONFIGURATIONS [Debug|Release|...]]
+#             [COMPONENT <component>]
+#             [[PATTERN <pattern> | REGEX <regex>]
+#              [EXCLUDE] [PERMISSIONS permissions...]] [...])
+# 如果目录名不以/结尾，那么这个目录将被安装为目标路径下的 abc，如果目录名以/结尾， 
+# 代表将这个目录中的内容安装到目标路径，但不包括这个目录本身。
 install(DIRECTORY doc/ DESTINATION share/doc/cmake/t2)
