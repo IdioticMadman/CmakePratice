@@ -1,5 +1,5 @@
 project(HELLO)
-
+cmake_minimum_required(VERSION 3.11)
 # ADD_SUBDIRECTORY 指令
 # ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])
 # 这个指令用于向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存
