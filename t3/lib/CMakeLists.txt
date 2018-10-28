@@ -16,7 +16,7 @@ message(STATUS "This is hello_static OUTPUT_NAME: ${OUTPUT_VALUE}")
 set_target_properties(hello PROPERTIES CLEAN_DIRECT_OUTPUT 1)
 set_target_properties(hello_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
 
-# 给动态库设置版本号
+# 给动态库设置版本号 VERSION指代动态库版本，SOVERSION指代API版本
 set_target_properties(hello PROPERTIES VERSION 1.2 SOVERSION 1)
 
 install(TARGETS hello hello_static
